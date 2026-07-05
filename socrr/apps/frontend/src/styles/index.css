@@ -1,0 +1,4 @@
+/* TODO: Define the global design system and Tailwind entry styles for SOCRR. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

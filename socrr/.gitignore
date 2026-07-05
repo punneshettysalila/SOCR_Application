@@ -1,0 +1,9 @@
+# TODO: Tune ignore rules for SOCRR
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+node_modules/
+dist/
+build/
+.env
