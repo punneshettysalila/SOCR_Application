@@ -1,17 +1,89 @@
-[build-system]
-requires = ["setuptools>=69", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
+[tool.poetry]
 name = "socrr-backend"
 version = "0.1.0"
-description = "TODO: SOCRR backend service"
+description = "SOCRR - AI Powered SOC Report Review Platform"
+authors = ["Silas P"]
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+packages = [{ include = "app" }]
 
-[tool.setuptools]
-package-dir = {"" = "app"}
+[tool.poetry.dependencies]
+python = "^3.12"
 
-[tool.pytest.ini_options]
-addopts = "-ra"
+# -----------------------
+# FastAPI
+# -----------------------
+fastapi = "^0.116.1"
+uvicorn = { extras = ["standard"], version = "^0.35.0" }
+
+# -----------------------
+# Database
+# -----------------------
+sqlalchemy = "^2.0.41"
+alembic = "^1.16.4"
+psycopg = {extras=["binary"], version="^3.2.9"}
+
+# -----------------------
+# Validation
+# -----------------------
+pydantic = "^2.11.7"
+pydantic-settings = "^2.10.1"
+
+# -----------------------
+# Security
+# -----------------------
+python-jose = "^3.5.0"
+passlib = "^1.7.4"
+bcrypt = "^4.3.0"
+
+# -----------------------
+# Async
+# -----------------------
+redis = "^6.2.0"
+celery = "^5.5.3"
+
+# -----------------------
+# Logging
+# -----------------------
+structlog = "^25.4.0"
+
+# -----------------------
+# PDF
+# -----------------------
+pymupdf = "^1.26.3"
+pdfplumber = "^0.11.7"
+unstructured = "^0.18.5"
+
+# -----------------------
+# Data
+# -----------------------
+pandas = "^2.3.1"
+openpyxl = "^3.1.5"
+
+# -----------------------
+# AI
+# -----------------------
+langchain = "^0.3.27"
+langgraph = "^0.5.1"
+llama-index = "^0.12.47"
+faiss-cpu = "^1.11.0.post1"
+sentence-transformers = "^5.0.0"
+
+# -----------------------
+# Utilities
+# -----------------------
+python-dotenv = "^1.1.1"
+httpx = "^0.28.1"
+orjson = "^3.11.0"
+
+[tool.poetry.group.dev.dependencies]
+
+pytest = "^8.4.1"
+pytest-asyncio = "^1.1.0"
+black = "^25.1.0"
+ruff = "^0.12.3"
+isort = "^6.0.1"
+mypy = "^1.17.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
